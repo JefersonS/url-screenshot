@@ -82,6 +82,7 @@ const checkFolderExistence = (folder) => {
             fs.mkdirSync(folder)
             resolve()
         }
+        resolve()
     })
 }
 

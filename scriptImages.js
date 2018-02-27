@@ -2,7 +2,7 @@ const imageActions = require('./imagesActions')
 
 const urlArray = [
     { address: 'google.com', name: 'google' },
-    { address: 'github.com', name: 'git' },
+    { address: 'youtube.com', name: 'youtube' },
     { address: 'discord.com', name: 'discord' }
 ]
 const previewsFolder =  './previews'
