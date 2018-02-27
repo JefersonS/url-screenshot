@@ -29,7 +29,8 @@ const createThumb = async (source, destination) => {
         destination: destination,
         concurrency: 4,
         width: 48,
-        quiet: true
+        quiet: true,
+        overwrite: true
     }
 
     try {
@@ -63,11 +64,13 @@ const screenshotUrls = async (urls, folder) => {
 
 const createThumbnails = async (previewFolder, thumbFolder) => {
     try {
-        const previews = await getPreviews(previewFolder)
+        let previews = await getPreviews(previewFolder)
+        previews = previews.filter( i => i.indexOf('p__') == -1 )
 
         for (let preview of previews) {
             console.log('Saving thumbnail of ' +preview)
             await createThumb(previewFolder+'/'+preview, thumbFolder)
+            fs.renameSync(previewFolder+'/'+preview, previewFolder+'/p__'+preview);
         }
 
         return 'Done'
